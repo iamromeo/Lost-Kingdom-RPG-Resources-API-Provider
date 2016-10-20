@@ -21,37 +21,18 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
 ));
 
-// Database Connection
-// if ( $environment == "local" ) {
-//     $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
-//         'dbs.options' => array (
-//             'mysql_read' => array(
-//                 'driver'    => 'pdo_mysql',
-//                 'host'      => 'localhost',
-//                 'dbname'    => 'scotchbox',
-//                 'user'      => 'root',
-//                 'password'  => 'root',
-//                 'charset'   => 'utf8mb4',
-//             ),
-//         ),
-//     ));
-// } else {
-    $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
-        'dbs.options' => array (
-            'mysql_read' => array(
-                'driver'    => 'pdo_mysql',
-                'host'      => $db_host,
-                'dbname'    => $db_name,
-                'user'      => $db_user,
-                'password'  => $db_password,
-                'charset'   => 'utf8mb4',
-            ),
+$app->register(new Silex\Provider\DoctrineServiceProvider(), array(
+    'dbs.options' => array (
+        'mysql_read' => array(
+            'driver'    => 'pdo_mysql',
+            'host'      => $db_host,
+            'dbname'    => $db_name,
+            'user'      => $db_user,
+            'password'  => $db_password,
+            'charset'   => 'utf8mb4',
         ),
-    ));
-// }
-
-
-
+    ),
+));
 
 // Global Twig Variables
 $app["twig"]->addGlobal("version", "0.1");
