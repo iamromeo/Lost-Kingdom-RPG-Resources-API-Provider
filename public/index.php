@@ -16,29 +16,26 @@ use Symfony\Component\HttpFoundation\Response;
 $app['debug'] = true; // Development only
 $environment = getenv('location');
 
-var_dump( $environment ); 
-exit;
-
 // Registration and Configuration of components
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../views',
 ));
 
 // Database Connection
-if ( $environment == "local" ) {
-    $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
-        'dbs.options' => array (
-            'mysql_read' => array(
-                'driver'    => 'pdo_mysql',
-                'host'      => 'localhost',
-                'dbname'    => 'scotchbox',
-                'user'      => 'root',
-                'password'  => 'root',
-                'charset'   => 'utf8mb4',
-            ),
-        ),
-    ));
-} else {
+// if ( $environment == "local" ) {
+//     $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
+//         'dbs.options' => array (
+//             'mysql_read' => array(
+//                 'driver'    => 'pdo_mysql',
+//                 'host'      => 'localhost',
+//                 'dbname'    => 'scotchbox',
+//                 'user'      => 'root',
+//                 'password'  => 'root',
+//                 'charset'   => 'utf8mb4',
+//             ),
+//         ),
+//     ));
+// } else {
     $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
         'dbs.options' => array (
             'mysql_read' => array(
@@ -51,7 +48,7 @@ if ( $environment == "local" ) {
             ),
         ),
     ));
-}
+// }
 
 
 
