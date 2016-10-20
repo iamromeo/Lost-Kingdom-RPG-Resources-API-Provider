@@ -6,8 +6,15 @@ use Symfony\Component\HttpFoundation\Response;
 
 $api = $app['controllers_factory'];
 
-$api->get('', function (Request $request) use ($app) {
-    return true; 
+$api->get('/tradegood', function (Request $request) use ($app) {
+    
+    $sql = "SELECT * FROM tradegoods";
+    $stmt = $app['db']->prepare($sql);
+    $stmt->execute();
+
+    $results = $stmt->fetchAll();
+
+    return $app->json($results);
 });
 
 
