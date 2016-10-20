@@ -16,6 +16,8 @@ use Symfony\Component\HttpFoundation\Response;
 $app['debug'] = true; // Development only
 $environment = getenv('location');
 
+var_dump( $environment ); 
+exit;
 
 // Registration and Configuration of components
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
