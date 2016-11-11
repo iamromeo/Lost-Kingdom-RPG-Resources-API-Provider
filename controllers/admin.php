@@ -10,6 +10,4 @@ $admin->get('dashboard', function (Request $request) use ($app) {
     return 'hello'; 
 })->bind('dashboard');
 
-
-
 return $admin;
