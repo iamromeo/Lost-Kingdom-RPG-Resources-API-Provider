@@ -27,7 +27,6 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 
 $app["twig"]->addGlobal("version", "0.1");
 
-
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'dbs.options' => array (
         'mysql_read' => array(
@@ -80,6 +79,16 @@ $app->error(function (\Exception $e, $code) use ($app) {
     $app['monolog']->addError($e->getTraceAsString());
     return new JsonResponse(array("statusCode" => $code, "message" => $e->getMessage(), "stacktrace" => $e->getTraceAsString()));
 });
+
+$app->register(new ServiceControllerServiceProvider());
+
+//load routes
+$routesLoader = new App\RoutesLoader($app);
+$routesLoader->bindRoutesToControllers();
+
+//load services
+$servicesLoader = new App\ServicesLoader($app);
+$servicesLoader->bindServicesIntoContainer();
 
 
 
