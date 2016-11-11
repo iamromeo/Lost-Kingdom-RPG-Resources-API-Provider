@@ -82,9 +82,7 @@ $app->error(function (\Exception $e, $code) use ($app) {
     return new JsonResponse(array("statusCode" => $code, "message" => $e->getMessage(), "stacktrace" => $e->getTraceAsString()));
 });
 
-// Mounting Controllers
-$app->mount('/api', include '../controllers/api.php');
-$app->mount('/secure', include '../controllers/admin.php');
+
 
 
 return $app;
