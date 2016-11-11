@@ -18,7 +18,6 @@ define("ROOT_PATH", __DIR__ . "/..");
 
 
 // Environment
-$app['debug'] = true; // Development only
 $environment = getenv('location');
 
 // Registration and Configuration of components
