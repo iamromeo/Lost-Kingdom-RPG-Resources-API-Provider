@@ -43,6 +43,7 @@
 
 # Composer PHAR
 /composer.phar
+composer.lock
 
 # Backup entities generated with doctrine:generate:entities command
 */Entity/*~
@@ -54,6 +55,9 @@ Vagrantfile
 # Bak Files
 *.bak
 *.php.bak
+
+# Log Files
+*.log
 
 # Sublime Files
 *.sublime-project
