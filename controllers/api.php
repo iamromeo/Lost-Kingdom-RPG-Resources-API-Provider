@@ -17,6 +17,16 @@ $api->get('/tradegood', function (Request $request) use ($app) {
     return $app->json($results);
 });
 
+$api->get('/category', function (Request $request) use ($app) {
+    
+    $sql = "SELECT * FROM tradegood_categories";
+    $stmt = $app['db']->prepare($sql);
+    $stmt->execute();
+
+    $results = $stmt->fetchAll();
+
+    return $app->json($results);
+});
 
 
 return $api;
