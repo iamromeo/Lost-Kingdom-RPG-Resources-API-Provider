@@ -20,5 +20,10 @@
         "doctrine/dbal": "~2.2",
 		"monolog/monolog": "~1.6",
 		"nesbot/Carbon": "~1.6"
-    }
+    },
+	"autoload": {
+		"psr-0": {
+			"App": "src/"
+		}
+	}
 }

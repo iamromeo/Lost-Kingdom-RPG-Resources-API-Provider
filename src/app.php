@@ -18,7 +18,6 @@ define("ROOT_PATH", __DIR__ . "/..");
 
 
 // Environment
-$app['debug'] = true; // Development only
 $environment = getenv('location');
 
 // Registration and Configuration of components
@@ -27,7 +26,6 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 ));
 
 $app["twig"]->addGlobal("version", "0.1");
-
 
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'dbs.options' => array (
@@ -82,9 +80,17 @@ $app->error(function (\Exception $e, $code) use ($app) {
     return new JsonResponse(array("statusCode" => $code, "message" => $e->getMessage(), "stacktrace" => $e->getTraceAsString()));
 });
 
-// Mounting Controllers
-$app->mount('/api', include '../controllers/api.php');
-$app->mount('/secure', include '../controllers/admin.php');
+$app->register(new ServiceControllerServiceProvider());
+
+//load routes
+$routesLoader = new App\RoutesLoader($app);
+$routesLoader->bindRoutesToControllers();
+
+//load services
+$servicesLoader = new App\ServicesLoader($app);
+$servicesLoader->bindServicesIntoContainer();
+
+
 
 
 return $app;
