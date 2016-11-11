@@ -1,4 +1,19 @@
 {
+	"name": "iamromeo/lostkingdomapi",
+	"type": "Application",
+	"description": "Lost Kingdom Medieval Trade and Industry API",
+	"keywords": [
+		"framework", "silex", "rest", "api"
+	],
+	"homepage": "http://www.lostkingdom.net",
+	"license": "MIT",
+	"authors": [{
+		"name": "Domitris Havlidis",
+		"email": "hello@iamrome.com"
+	}],
+	"require": {
+		"php": ">=5.3.0"
+	},
     "require": {
         "silex/silex": "~2.0",
         "twig/twig": "^1.24",
